@@ -42,6 +42,10 @@ void Buzzer :: playSound(Sounds s)
   	break;
   	case LOSE:
   	break;
+    case BIP2:
+    tone(_buzz, 800, 50);
+    delay(500);
+    break;
   }
 }
 void Buzzer :: playMelody(int *m, int *t)

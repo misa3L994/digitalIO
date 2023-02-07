@@ -21,6 +21,8 @@ void digitalIO::begin(uint8_t mode){
   if(mode != 0)state = false;
   else state = true;
  }
+ else state = false;
+
 }
 void digitalIO::begin(uint8_t pin, uint8_t input){
   num =_pin = pin;
@@ -67,4 +69,25 @@ uint8_t digitalIO::getNumber(){
     
    oldPush = newPush;
    return(buttonPressed);
+}
+
+void digitalIO :: blinkOutput(uint16_t waitTime)
+{
+  delayTime = waitTime;
+  setOutput(!state);
+   delay(delayTime);
+}
+void digitalIO :: blinkOutput(uint8_t times,uint8_t speed)
+{
+  uint8_t _times = times*2;
+  for(int i = 0;i < _times;i++)
+  {
+    blinkOutput(speed);
+  }
+}
+void digitalIO :: setOutput(boolean s)
+{
+  digitalWrite(_pin,s);
+  if(s == HIGH)state = true;
+  else state = false;
 }

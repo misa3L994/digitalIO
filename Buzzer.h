@@ -231,6 +231,7 @@ const int noteDurations[] = {
 
 enum Sounds {
    BIP
+  ,BIP2
   ,WRONG
   ,RIGHT
   ,WINS
