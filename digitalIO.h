@@ -17,7 +17,9 @@ bool state;
 
 public:
 digitalIO();
+digitalIO(uint8_t);
 void begin(uint8_t,uint8_t);
+void begin(uint8_t);
 bool getState();
 void setNumber(uint8_t);
 uint8_t getNumber();

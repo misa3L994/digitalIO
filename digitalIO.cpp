@@ -3,15 +3,25 @@
 
 
 //FUNCIONES 
-digitalIO::digitalIO(){
-     
+digitalIO::digitalIO(){}
+digitalIO::digitalIO(uint8_t pin){
+  _pin = pin;
 }
 digitalIO digitalIO::operator+(digitalIO sw){
 digitalIO r;
 r.num = num + sw.num;
 return r;
 }
+void digitalIO::begin(uint8_t mode){
+  num =_pin;
+  
+  pinMode(_pin,mode);
 
+  if(mode == INPUT or mode == INPUT_PULLUP){
+  if(mode != 0)state = false;
+  else state = true;
+ }
+}
 void digitalIO::begin(uint8_t pin, uint8_t input){
   num =_pin = pin;
   
