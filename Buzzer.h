@@ -247,12 +247,12 @@ public:
 	Buzzer(void);
 	void buzzerBegin(uint8_t);
 	void playSound(Sounds);
-  void playSound(void);
+    void playSound(void);
 	void bip(void);
-  void playMelody(int*,int*);
-  void melody(void);
-  void melody(Sounds);
-  void alarm(void);
+  	void playMelody(int*,int*);
+  	void melody(void);
+  	void melody(Sounds);
+  	void alarm(void);
 private:
 	
 	uint8_t _buzz;

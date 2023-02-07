@@ -17,20 +17,20 @@ void Buzzer :: bip(void)
 }	
 void Buzzer :: playSound(void)
 {
-  
+  tone(_buzz,2000,100);
 }
 void Buzzer :: playSound(Sounds s)
 {
   switch(s)
   {
   	default:
-  	tone(_buzz,2000,100);
+  	
   	break;
   	case BIP:
   	tone(_buzz,1000,50);
   	break;
   	case WRONG:
-  	tone(_buzz,400,500);
+  	tone(_buzz,200,500);
   	break;
   	case RIGHT:
   	tone(_buzz, 2000, 100);
@@ -70,23 +70,50 @@ void Buzzer :: melody(Sounds s)
 {
   switch(s)
   {
-    default:
-    playMelody(underworld_melody,underworld_tempo);
-    break;
+    //default:
+   
+    //break;
     case WRONG:
-    playMelody(wrong,noteDurations);
+    for (int thisNote = 0; thisNote < 3; thisNote++) {
+    int noteDuration = 1000 / noteDurations[thisNote];
+    tone(_buzz, wrong[thisNote], noteDuration);
+    int pauseBetweenNotes = noteDuration * 1.30;
+    delay(pauseBetweenNotes);
+    noTone(_buzz);
+  }
     break;
     case WINS:
-    playMelody(wins,tempoW);
+	int size = sizeof(wins) / sizeof(int);
+    for (int thisNote = 0; thisNote < size; thisNote++) {
+    int noteDuration = 1000 / tempoW[thisNote];
+    tone(_buzz, wins[thisNote], noteDuration);
+    int pauseBetweenNotes = noteDuration * 1.30;
+    delay(pauseBetweenNotes);
+    noTone(_buzz);
+  }
     break;
     case LEVEL_UP:
-    playMelody(level_up,metric);
+	for (int thisNote = 0; thisNote < 4; thisNote++) {
+    int noteDuration = 1000 / metric[thisNote];
+    tone(_buzz, level_up[thisNote], noteDuration);
+    int pauseBetweenNotes = noteDuration * 1.30;
+    delay(pauseBetweenNotes);
+    noTone(_buzz);
+  }
     break;
   }
 }
 void Buzzer :: melody(void)
 {
-   playMelody(mario,tempo);
+   
+   int size = sizeof(mario) / sizeof(int);
+   for (int thisNote = 0; thisNote < size; thisNote++) {
+    int noteDuration = 1000 / tempo[thisNote];
+    tone(_buzz, mario[thisNote], noteDuration);
+    int pauseBetweenNotes = noteDuration * 1.30;
+    delay(pauseBetweenNotes);
+    noTone(_buzz);
+  }
 }
 void Buzzer :: alarm(void)
 {
