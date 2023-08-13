@@ -35,7 +35,7 @@ void loop() {
 
   if (btn.getTimeOn() > 2000)
   {
-    led2.blink(1, 100);
+    led2.blinkOutput(1, 100);
   }
 
   if (input.getTimeOn() > 5000)
@@ -48,7 +48,7 @@ void loop() {
   if (number != 0)
   {
     Serial.println(number);
-    led1.blink(number, 500);
+    led1.blinkOutput(number, 500);
     
    
   }
