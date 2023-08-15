@@ -21,7 +21,7 @@ bip	KEYWORD2
 playMelody	KEYWORD2
 melody	KEYWORD2
 setOutput	KEYWORD2
-
+blinkOutput	KEYWORD2
 #######################################
 # Constants
 #######################################
