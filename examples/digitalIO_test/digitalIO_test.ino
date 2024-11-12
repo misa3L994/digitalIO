@@ -10,7 +10,7 @@
 #include <digitalIO.h>
 
 digitalIO input;
-digitalIO btn(43);
+digitalIO btn(A1);
 digitalIO led1(9);
 digitalIO led2;
 digitalIO rele(A0);
@@ -19,23 +19,17 @@ int number;
 void setup() {
   Serial.begin(115200);
 
-  input.begin(41, INPUT_PULLUP);
+  input.begin(3, INPUT_PULLUP);
   btn.begin(INPUT_PULLUP);
   led1.begin(OUTPUT);
-  led2.begin(31, OUTPUT);
+  led2.begin(10, OUTPUT);
   rele.begin(OUTPUT);
 
  
   Serial.println("Inicia digitalIo test..");
 }
 
-void loop()
-{
-Serial.print(input.readWithHysteresis(3000));
-Serial.print(" -- ");
-Serial.println(btn.readWithHysteresis(1000));
-}
-void loop1() {
+void loop() {
 
   led1.setOutput(btn.getState());
 
