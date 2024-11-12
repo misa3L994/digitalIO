@@ -91,3 +91,42 @@ void digitalIO :: setOutput(boolean s)
   if(s == HIGH)state = true;
   else state = false;
 }
+
+/*
+bool digitalIO :: readWithHysteresis(uint8_t pin, long &lastChangeTime, bool &state, bool &flag){
+  bool rawState = digitalRead(pin);
+
+  // Detecta transiciones de estado
+  if (rawState != state && !flag) {
+    lastChangeTime = millis();
+    flag = true;
+  }
+
+  // Aplica histéresis después de la transición
+  if (flag && (millis() - lastChangeTime >= delayTime)) {
+    state = rawState;
+    flag = false;
+  }
+
+  return state;
+
+}
+*/
+bool digitalIO :: readWithHysteresis(long Time){
+  bool rawState = digitalRead(_pin);
+
+  // Detecta transiciones de estado
+  if (rawState != state1 && !flag1) {
+    lastChangeTime = millis();
+    flag1 = true;
+  }
+
+  // Aplica histéresis después de la transición
+  if (flag1 && (millis() - lastChangeTime >= Time)) {
+    state1 = rawState;
+    flag1 = false;
+  }
+
+  return state1;
+
+}

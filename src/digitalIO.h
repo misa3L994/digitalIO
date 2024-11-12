@@ -14,6 +14,10 @@ long getTime2 = 0;
 bool newPush = false;
 bool oldPush = false;
 uint16_t delayTime;
+long lastChangeTime = 0;
+bool state1 = LOW;
+bool flag1 = false;
+const long delayT = 2000;  // Tiempo de histéresis (ajustable) 
 
 public:
 bool state;
@@ -30,6 +34,8 @@ uint8_t num;
 void blinkOutput(uint16_t);
 void blinkOutput(uint8_t,uint8_t);
 void setOutput(boolean);
+//bool readWithHysteresis(uint8_t pin, long &lastChangeTime, bool &state, bool &flag);
+bool readWithHysteresis(long Time);
 
 };
 
